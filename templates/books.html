@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Текущие книги {% endblock %}</h1>
+
+<div class="container mt-5 mb-3">
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-4">
+            <div class="card p-3 mb-2 border-primary">
+                <div class="card-header">
+                    <a href="{{ url_for('book', book_id=book['id_book']) }}">>
+                        <b>Книга по договору # {{ book['number'] }} от {{ book['date'] }}</b>
+                    </a>
+                    <br>
+                    <span class="badge bg-warning">{{ book['deal_type'] }}</span>
+                    {% if book['deal_status']==False %}
+                    <span class="badge bg-success"> в работе </span>
+                    {% else %}
+                    <span class="badge bg-danger"> сделка завершена </span>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ book['book_name'] }} <span class="badge bg-primary">{{
+                            book['start_price'] }} ₽</span></h5>
+                    <span class="badge bg-success">количество страниц {{ book['pages'] }}</span>
+                    <span class="badge bg-danger">{{ book['author'] }} - автор</span>
+                    <span class="badge bg-info">Тип книги {{ book['type_of_book'] }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

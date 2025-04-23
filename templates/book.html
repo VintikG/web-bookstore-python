@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %} Книга по договору # {{ book['number'] }} от {{ book['date'] }} {% endblock %}</h2>
+<span class="badge bg-warning">{{ book['deal_type'] }}</span>
+{% if not book['deal_status'] %}
+<span class="badge bg-success"> в работе </span>
+{% else %}
+<span class="badge bg-danger"> сделка завершена </span>
+{% endif %}
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Позиция</th>
+            <th scope="col">Значение</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Название книги</td>
+            <td>{{ book['book_name'] }}</td>
+        </tr>
+        <tr>
+            <td>Стартовая цена</td>
+            <td>{{ book['start_price'] }} ₽</td>
+        </tr>
+        <tr>
+            <td>Максимальная скидка</td>
+            <td>{{ book['discount'] }} %</td>
+        </tr>
+        <tr>
+            <td>Цена сделки</td>
+            <td>{{ book['finish_price'] }} ₽</td>
+        </tr>
+        <tr>
+            <td>Клиент</td>
+            <td>{{ book['name'] }}</td>
+        </tr>
+        <tr>
+            <td>Контакты клиента</td>
+            <td>тел.: {{ book['phone_number'] }}, почта: {{ book['email'] }}</td>
+        </tr>
+        <tr>
+            <td>Количество страниц</td>
+            <td>{{ book['pages'] }}</td>
+        </tr>
+        <tr>
+            <td>Автор</td>
+            <td>{{ book['author'] }}</td>
+        </tr>
+        <tr>
+            <td>Тип книги</td>
+            <td>{{ book['type_of_book'] }}</td>
+        </tr>
+        <tr>
+            <td>Описание</td>
+            <td>{{ book['description'] }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-auto">
+        <a href="/clients">
+            <button type="submit" class="btn btn-secondary"><i class="bi-people"></i> Перейти к клиенту</button>
+        </a>
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('contract', contract_id=book['id_contract']) }}">
+            <button type="submit" class="btn btn-secondary"><i class="bi-file-earmark-binary"></i> Перейти к договору</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

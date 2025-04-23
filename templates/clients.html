@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %}  Клиенты {% endblock %}</h1>
+<div class="container mt-5 mb-3">
+    <div class="row">
+        {% for client in clients %}
+        <div class="col-md-4">
+            <div class="card p-3 mb-2 border-primary">
+                <div class="card-header">
+                    <a href="{{ url_for('client', id_client=client['id_client']) }}">
+                        <b>Клиент # {{ client['id_client'] }}</b>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ client['name'] }} <span class="badge bg-primary">{{
+                            client['email'] }} </span></h5>
+                    <span class="badge bg-success">номер телефона {{ client['phone_number'] }}</span>
+                    <span class="badge bg-danger">{{ client['passport'] }} - паспорт клиента</span>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

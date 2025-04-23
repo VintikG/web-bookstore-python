@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %} Клиент # {{ client['name'] }} {% endblock %}</h2>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Позиция</th>
+            <th scope="col">Значение</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ФИО клиента</td>
+            <td>{{ client['name'] }}</td>
+        </tr>
+        <tr>
+            <td>Электронная почта</td>
+            <td>{{ client['email'] }}</td>
+        </tr>
+        <tr>
+            <td>Номер телефона</td>
+            <td>{{ client['phone_number'] }}</td>
+        </tr>
+        <tr>
+            <td>Паспортные данные</td>
+            <td>{{ client['passport'] }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-auto">
+        <a href="/books">
+            <button type="submit" class="btn btn-secondary"><i class="bi-book"></i> Перейти к книгам</button>
+        </a>
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('contract', contract_id=client['id_contract']) }}">
+            <button type="submit" class="btn btn-secondary"><i class="bi-file-earmark-binary"></i> Перейти к договору</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

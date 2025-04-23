@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Добавление новой книги {% endblock %}</h1>
+<br>
+<form method="post" class="px-4">
+    <div class="row mb-4">
+        <label for="book_name" class="col-sm-3 col-form-label">Название книги</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="book_name" value="{{ request.form['book_name'] }}" placeholder="Введите полное название книги...">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="author" class="col-sm-3 col-form-label">Автор</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="author" value="{{ request.form['author'] }}" placeholder="Введите автора книги...">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="type_of_book" class="col-sm-3 col-form-label">Тип книги</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="type_of_book" value="{{ request.form['type_of_book'] }}" placeholder="(Аудио|Печатная)">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="pages" class="col-sm-3 col-form-label">Кол-во страниц</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" name="pages" value="{{ request.form['pages'] }}" placeholder="Введите кол-во страниц">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="description" class="col-sm-3 col-form-label">Описание книги</label>
+        <div class="col-sm-8">
+            <input type="textarea" class="form-control" name="description" value="{{ request.form['description'] }}" placeholder="Введите описание книги">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="owner" class="col-sm-3 col-form-label">Покупатель</label>
+        <div class="col-sm-8">
+            <select class="form-select" name="owner">
+                <option value='0'>Покупатель...</option>
+                {% for c in clients %}
+                    <option value={{c.id_client}}>{{c.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="bi-book"></i> Добавить книгу</button>
+</form>
+
+{% endblock %}

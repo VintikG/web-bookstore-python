@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{% block title %} Добавление нового сотрудника {% endblock %}</h1>
+<br>
+<form method="post" class="px-4">
+    <div class="row mb-4">
+        <label for="name" class="col-sm-3 col-form-label">ФИО сотрудника</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="name" value="{{ request.form['name'] }}" placeholder="Введите ФИО...">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="phone_number" class="col-sm-3 col-form-label">Номер телефона</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="phone_number" value="{{ request.form['phone_number'] }}" placeholder="Введите номер телефона клиента...">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="email" class="col-sm-3 col-form-label">email</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="email" value="{{ request.form['email'] }}" placeholder="example@example.ru">
+        </div>
+    </div>
+        <div class="row mb-3">
+            <label for="position" class="col-sm-3 col-form-label">Должность</label>
+                 <div class="col-sm-2">
+             <input type="text" class="form-control" name="position" value="{{ request.form['position'] }}" placeholder="Введите должность">
+        </div>
+        </div>
+    <div class="row mb-3">
+        <label for="department" class="col-sm-3 col-form-label">Отдел</label>
+        <div class="col-sm-8">
+            <input type="textarea" class="form-control" name="department" value="{{ request.form['department'] }}" placeholder="Введите отдел">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="bi-person-badge"></i> Добавить сотрудника</button>
+</form>
+
+{% endblock %}

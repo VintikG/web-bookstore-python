@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %} Договор # {{ contract['number'] }} от {{ contract['date'] }} {% endblock %}</h2>
+<span class="badge bg-warning">{{ contract['deal_type'] }}</span>
+{% if contract['deal_status']==False %}
+<span class="badge bg-success"> в работе </span>
+{% else %}
+<span class="badge bg-danger"> сделка завершена </span>
+{% endif %}
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Позиция</th>
+            <th scope="col">Значение</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Стартовая цена</th>
+            <td>{{ contract['start_price'] }} ₽</th>
+        </tr>
+        <tr>
+            <td>Максимальная скидка</th>
+            <td>{{ contract['discount'] }} %</th>
+        </tr>
+        <tr>
+            <td>Цена сделки</th>
+            <td>{{ contract['finish_price'] }} ₽</th>
+        </tr>
+        <tr>
+            <td>Клиент</th>
+            <td>{{ contract['name'] }}, {{ contract['phone_number'] }}, {{ contract['email'] }}</th>
+        </tr>
+        <tr>
+            <td>Код сотрудника</th>
+            <td>{{ contract['employee_id'] }} </th>
+        </tr>
+        <tr>
+            <td>Книга</th>
+            <td>{{ contract['book_name'] }}, автор {{ contract['author'] }}, количество страниц {{ contract['pages'] }}, {{
+                contract['type_of_book'] }}-тип книги</th>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-auto">
+        <a href="/clients">
+            <button type="submit" class="btn btn-secondary"><i class="bi-people"></i> Перейти к клиенту</button>
+        </a>
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('book', book_id=contract['id_book']) }}">
+            <button type="submit" class="btn btn-secondary"><i class="bi-house"></i> Перейти к книге</button>
+        </a>
+    </div>
+    <div class="col-auto">
+        <a href="{{ url_for('generate_contract', id_contract=contract['id_contract']) }}">
+            <button type="submit" class="btn btn-primary"><i class="bi-printer"></i> Скачать договор</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
