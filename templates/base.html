@@ -2,54 +2,74 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    <!--!
+        \brief Метаданные страницы и подключение внешних стилей Bootstrap и иконок.
+        \details Здесь определяется кодировка, адаптивность, загружаются стили Bootstrap и иконки.
+    -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
-    <!-- Bootstrap CSS + Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <title>{% block title %} {% endblock %}</title>
 
+    <!--!
+        \brief Заголовок страницы.
+        \details Используется блок title шаблонизатора для подстановки индивидуального заголовка.
+    -->
+    <title>{% block title %} {% endblock %}</title>
 </head>
 
 <body>
+    <!--! \brief Основной контейнер интерфейса. -->
     <div class="container-fluid">
         <div class="row flex-nowrap">
+            <!--!
+                \brief Боковое меню навигации.
+                \details Включает ссылки на разделы: продажи, клиенты, книги, отчеты, сотрудники, добавление.
+            -->
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2  min-vh-100">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 min-vh-100">
+                    <!--! \brief Название системы. -->
                     <a href="/"
                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <span class="fs-5 d-none d-sm-inline">«ГКУК КОСБС»</span>
+                        <span class="fs-5 d-none d-sm-inline">«Книжный Лабиринт»</span>
                     </a>
+
+                    <!--! \brief Список ссылок на основные разделы системы. -->
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                         id="menu">
                         <li>
                             <a href="/contracts" class="nav-link px-0 align-middle text-white">
-                            <i class="fs-4 bi-file-earmark-binary"></i> <span class="ms-1 d-none d-sm-inline">Выдача книг</span></a>
+                                <i class="fs-4 bi-file-earmark-binary"></i> <span class="ms-1 d-none d-sm-inline">Продажи</span>
+                            </a>
                         </li>
                         <li>
                             <a href="/clients" class="nav-link px-0 align-middle text-white">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Клиенты</span></a>
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Клиенты</span>
+                            </a>
                         </li>
                         <li>
                             <a href="/books" class="nav-link px-0 align-middle text-white">
-                            <i class="fs-4 bi-book"></i> <span class="ms-1 d-none d-sm-inline">Книги</span></a>
+                                <i class="fs-4 bi-book"></i> <span class="ms-1 d-none d-sm-inline">Книги</span>
+                            </a>
                         </li>
                         <li>
                             <a href="/reports" class="nav-link px-0 align-middle text-white">
-                            <i class="fs-4 bi-graph-up-arrow"></i> <span class="ms-1 d-none d-sm-inline">Отчеты</span></a>
+                                <i class="fs-4 bi-graph-up-arrow"></i> <span class="ms-1 d-none d-sm-inline">Отчеты</span>
+                            </a>
                         </li>
                         <li>
                             <a href="/employees" class="nav-link px-0 align-middle text-white">
-                            <i class="fs-4 bi-person-badge"></i> <span class="ms-1 d-none d-sm-inline">Сотрудники</span></a>
+                                <i class="fs-4 bi-person-badge"></i> <span class="ms-1 d-none d-sm-inline">Сотрудники</span>
+                            </a>
                         </li>
+
+                        <!--! \brief Выпадающее меню для добавления сущностей. -->
                         <li class="dropdown pb-4">
                             <a href="#" class="nav-link px-0 align-middle text-white dropdown-toggle"
                                 id="dropdownCreate" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fs-4 bi-plus-circle"></i> <span class="ms-1 d-none d-sm-inline">Добавить </span>
+                                <i class="fs-4 bi-plus-circle"></i> <span class="ms-1 d-none d-sm-inline">Добавить</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-primary text-small shadow">
                                 <li><a class="dropdown-item" href="/new_contract">договор</a></li>
@@ -60,23 +80,28 @@
                             </ul>
                         </li>
                     </ul>
+
+                    <!--! \brief Выпадающее меню пользователя. -->
                     <hr>
                     <div class="dropdown pb-4">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                             id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="d-none d-sm-inline mx-1">Мамедов А.Д.</span>
+                            <span class="d-none d-sm-inline mx-1">Горюнов И.А.</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-primary text-small shadow">
                             <li><a class="dropdown-item" href="#">Настройки</a></li>
                             <li><a class="dropdown-item" href="#">Профиль</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Выйти</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+            <!--!
+                \brief Основная часть страницы.
+                \details Отображает flash-сообщения и контент шаблона.
+            -->
             <div class="col py-3">
                 {% for message in get_flashed_messages() %}
                     <div class="alert alert-danger">{{ message }}</div>
@@ -86,16 +111,14 @@
         </div>
     </div>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--! \brief Подключение JS-скриптов для работы Bootstrap и jQuery. -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" 
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 </body>

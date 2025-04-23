@@ -1,5 +1,10 @@
+<!-- @page books_web_page Books web-page -->
+<!-- @section books_characteristics Books characteristics -->
+
 {% extends 'base.html' %}
 {% block content %}
+
+<!-- Страница с книгами -->
 <h1>{% block title %} Текущие книги {% endblock %}</h1>
 
 <div class="container mt-5 mb-3">
@@ -19,6 +24,7 @@
                     <span class="badge bg-danger"> сделка завершена </span>
                     {% endif %}
                 </div>
+                <!-- Навигационные кнопки -->
                 <div class="card-body">
                     <h5 class="card-title">{{ book['book_name'] }} <span class="badge bg-primary">{{
                             book['start_price'] }} ₽</span></h5>

@@ -1,13 +1,22 @@
+<!-- @page book_web_page Book web-page -->
+<!-- @section book_characteristics Book characteristics -->
+
 {% extends 'base.html' %}
 {% block content %}
+
+<!-- Заголовок страницы книги -->
 <h2>{% block title %} Книга по договору # {{ book['number'] }} от {{ book['date'] }} {% endblock %}</h2>
+
 <span class="badge bg-warning">{{ book['deal_type'] }}</span>
+
 {% if not book['deal_status'] %}
 <span class="badge bg-success"> в работе </span>
 {% else %}
 <span class="badge bg-danger"> сделка завершена </span>
 {% endif %}
 <hr>
+
+<!-- Таблица характеристик книги -->
 <table class="table">
     <thead>
         <tr>
@@ -59,6 +68,7 @@
     </tbody>
 </table>
 
+<!-- Навигационные кнопки -->
 <div class="row">
     <div class="col-auto">
         <a href="/clients">
